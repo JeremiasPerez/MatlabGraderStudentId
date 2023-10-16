@@ -13,7 +13,7 @@ let searchReportFile = (fileName) => {
 
 let getReportFileData = (filename) => {
   return new Promise((resolve, reject) => {
-    fetch(filename)
+    fetch('file://'+filename)
       .then((response) => response.text())
       .then((text) => {
         csv()
