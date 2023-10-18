@@ -3,7 +3,7 @@ const csv=require("csvtojson");
 
 let searchReportFile = (fileName) => {
   return new Promise((resolve, rejejct) => {
-    let regExp = fileName + '.*\.csv'
+    let regExp = fileName.replace(/[\(\)]/g,'.') + '.*\.csv'
     chrome.downloads.search({limit: 1, orderBy: ['-startTime'], filenameRegex: regExp}).then((items) => {
       if (items.length > 0) resolve(items[0])
       else resolve(null)
