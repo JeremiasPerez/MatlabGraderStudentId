@@ -6,10 +6,12 @@ class UserParser {
 
   loadUserData (){
     let users = document.querySelectorAll('#participants .cell.c1[id*="user-index-participants"] a')
-    if (users == null || users.length == 0) return
+    if (users == null || users.length === 0) return
     let userList = []
     for (const userEl of users){
-      let name = userEl.innerText
+      let children = userEl.childNodes
+      if (children.length !== 2 || userEl.lastChild.nodeType !== Node.TEXT_NODE) continue
+      let name = userEl.lastChild.nodeValue
       let m = userEl.href.match(/id\=(\d+)/)
       if (m == null || m.length < 2) continue
       let id = m[1]
@@ -27,10 +29,10 @@ class UserParser {
     if (refPoint == null) return
     let button = document.createElement('button')
     button.innerText = 'Parse users'
+    button.id = 'mgParseUsers'
     button.addEventListener('click',() => {
       that.loadUserData()
     })
-    button.style.marginRight = '20px !important'
     refPoint.before(button)
   }
 

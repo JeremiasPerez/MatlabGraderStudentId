@@ -2,7 +2,7 @@
   "name": "__MSG_appName__",
   "short_name": "__MSG_appShortName__",
   "description": "__MSG_appDescription__",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "manifest_version": 3,
   "default_locale": "en",
   "icons": {
@@ -19,6 +19,7 @@
     {
       "matches": ["https://egela.ehu.eus/user/index.php*"],
       "js": ["scripts/parseUsers.js"],
+      "css": ["styles/parseUsers.css"],
       "run_at": "document_end"
     }
   ],

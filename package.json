@@ -1,7 +1,7 @@
 {
   "name": "MatlabGraderStudentId",
   "private": true,
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "This extension shows student names in Matlab Grader task reports",
   "scripts": {
     "start": "npm run dev:chrome",
