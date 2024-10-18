@@ -18,8 +18,20 @@ class UserParser {
       userList.push({studentId: id, studentName: name})
     }
 
-    chrome.storage.local.set({"studentData": userList}).then(() => {
-      Alerts.showToast(`User data successfully parsed. ${userList.length} users found`)
+    chrome.storage.local.get('studentData').then((data) => {
+      let list = data.studentData || []
+      if(list.length === 0){
+        list = userList
+      } else {
+        userList.forEach((u) => {
+          let p = list.find((el) => u.studentId == el.studentId)
+          if (p == null) list.push(u)
+        })
+      }
+      chrome.storage.local.set({"studentData": list}).then(() => {
+        Alerts.showToast(`User data successfully parsed. ${userList.length} users found`)
+      })
+
     })
   }
 
