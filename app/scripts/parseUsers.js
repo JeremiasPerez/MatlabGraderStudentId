@@ -42,8 +42,10 @@ class UserParser {
     let button = document.createElement('button')
     button.innerText = 'Parse users'
     button.id = 'mgParseUsers'
-    button.addEventListener('click',() => {
+    button.addEventListener('click',(e) => {
       that.loadUserData()
+      e.preventDefault()
+      e.stopPropagation()
     })
     refPoint.before(button)
   }
