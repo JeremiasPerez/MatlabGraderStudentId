@@ -37,7 +37,7 @@ class UserParser {
 
   injectButton (){
     let that = this
-    let refPoint = document.querySelector('.enrolusersbutton ')
+    let refPoint = document.querySelector('p[data-region="participant-count"]')
     if (refPoint == null) return
     let button = document.createElement('button')
     button.innerText = 'Parse users'
